@@ -10,10 +10,10 @@ use std::{
 };
 
 
-const HELP: &str = r#"to_do - A simple command-line task manager 📝
+const HELP: &str = r#"todo - A simple command-line task manager 📝
 
 USAGE:
-    to_do <COMMAND> [ARGS]
+    todo <COMMAND> [ARGS]
 
 COMMANDS:
     add <task>        Add a single new task
@@ -24,10 +24,10 @@ COMMANDS:
 Use of any other command will display this help message.
 
 EXAMPLES:
-    to_do add Read a book
-    to_do show
-    to_do update
-    to_do delete"#;
+    todo add Read a book
+    todo show
+    todo update
+    todo delete"#;
 
 pub fn run(
     mut args: impl Iterator<Item = String>,
