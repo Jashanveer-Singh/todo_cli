@@ -15,10 +15,6 @@ A lightweight and efficient command-line application written in Rust for managin
     * [Installation](#installation)
 * [Usage](#usage)
 * [Data Storage](#data-storage)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 ---
 
