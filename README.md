@@ -45,7 +45,7 @@ You need to have Rust and Cargo (Rust's package manager) installed. The easiest 
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/YOUR_GITHUB_USERNAME/todo_cli.git todo
+    git clone https://github.com/Jashanveer-Singh/todo_cli.git todo
     ```
 2.  **Navigate into the project directory:**
     ```bash
@@ -103,8 +103,8 @@ Running the executable:
 Assuming you ran `cargo install --path .`, you can run the commands directly:
 
 ```bash
-./target/release/todo add Learn Rust
-./target/release/todo show
+todo add Learn Rust
+todo show
 ```
 ## Data Storage
 
