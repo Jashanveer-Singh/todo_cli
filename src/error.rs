@@ -4,6 +4,8 @@ pub enum MyError {
     Io(io::Error),
     Serde(serde_json::Error),
     Parse(std::num::ParseIntError),
+    NoTasks,
+    EmptyTask,
 }
 
 impl From<io::Error> for MyError {
@@ -30,6 +32,8 @@ impl std::fmt::Display for MyError {
             MyError::Serde(error)=> write!(f, "{}", error),
             MyError::Parse(error)=> write!(f, "{}", error),
             MyError::Io(error)=> write!(f, "{}", error),
+            MyError::EmptyTask=> write!(f, "Empty Task"),
+            MyError::NoTasks=> write!(f, "Todo is Empty"),
         }
     }
 }

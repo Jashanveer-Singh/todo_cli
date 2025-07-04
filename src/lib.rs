@@ -38,14 +38,14 @@ pub fn run(
 
     match &args.next().as_deref() {
         Some("add") => {
-            tasks.push(Task::new(args));
+            tasks.push(Task::build(args)?);
             tasks.save(&data_file_path)?;
         }
         Some("show") => {
-            tasks.display();
+           tasks.display()?;
         }
         Some("delete") => {
-            tasks.display();
+            tasks.display()?;
             print!("\nChoose Tasks to delete: ");
             io::stdout().flush()?;
             let mut input = String::new();
@@ -69,7 +69,7 @@ pub fn run(
             tasks.save(&data_file_path)?;
         }
         Some("update") => {
-            tasks.display();
+            tasks.display()?;
             print!("\nChoose to task to update: ");
             io::stdout().flush()?;
             let mut input = String::new();

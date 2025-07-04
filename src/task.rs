@@ -30,12 +30,15 @@ pub struct Task {
 }
 
 impl Task {
-    pub fn new(args: impl Iterator<Item = String>) -> Self {
+    pub fn build(args: impl Iterator<Item = String>) -> Result<Self, MyError> {
         let title = args.collect::<Vec<String>>().join(" ");
-        Task {
+        if title.len() == 0 {
+            return Err(MyError::EmptyTask);
+        }
+        Ok(Task {
             title,
             status: Status::Waiting,
-        }
+        })
     }
 
     pub fn update(&mut self) {
@@ -50,7 +53,7 @@ impl Task {
 pub trait TaskManager: Sized {
     fn load(data_file_path: &PathBuf) -> Result<Self, MyError>;
     fn save(&mut self, data_file_path: &PathBuf)-> Result<(), MyError>;
-    fn display(&self);
+    fn display(&self)-> Result<(), MyError>;
 }
 
 impl TaskManager for Vec<Task> {
@@ -79,12 +82,16 @@ impl TaskManager for Vec<Task> {
         Ok(())
     }
 
-    fn display(&self) {
+    fn display(&self)-> Result<(), MyError> {
+        if self.len() == 0 {
+            return Err(MyError::NoTasks);
+        }
         print!("SrNo | Task                                     | Status\n");
         print!("-----+------------------------------------------+-------------------\n");
         for (i, task) in self.iter().enumerate() {
             print!("{:<4} | {:<40} | {}\n", i + 1, task.title, task.status);
         }
+        Ok(())
     }
 }
 
